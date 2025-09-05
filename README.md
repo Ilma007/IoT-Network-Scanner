@@ -188,3 +188,73 @@ Example reports → sample .csv and .json files
 
 This project is not just a scanner — it’s a learning tool for cybersecurity and networking basics.
 It helps people see what’s really happening on their Wi-Fi, identify risks, and take the first step towards safer internet usage.
+
+
+
+proper guidance for run this project /////////////////////---------------------------------------///////////////////////////////////////////////
+🖥️ How to Run IoT Network Scanner (Step by Step)
+1️⃣ Clone or Download Project
+
+If uploaded on GitHub:
+
+git clone https://github.com/ilma007/IoT-Network-Scanner.git
+cd IoT-Network-Scanner
+
+
+(Else just go to your local project folder.)
+
+2️⃣ Create & Activate Virtual Environment
+
+Windows (PowerShell):
+
+python -m venv .venv
+.venv\Scripts\activate
+
+
+Linux / Mac:
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+3️⃣ Install Dependencies
+pip install -r requirements.txt
+
+
+👉 If requirements.txt not available, install manually:
+
+pip install python-nmap scapy tabulate psutil
+
+4️⃣ Run the Scanner
+
+Basic discovery (no port scan):
+
+python iot_scanner.py --cidr 192.168.1.0/24
+
+
+Discovery + Port scan (recommended):
+
+python iot_scanner.py --cidr 192.168.1.0/24 --scan
+
+
+Deep scan (service & version detection):
+
+python iot_scanner.py --cidr 192.168.1.0/24 --scan --deep
+
+
+Scapy ARP discovery (if you have Npcap + Admin rights on Windows):
+
+python iot_scanner.py --cidr 192.168.1.0/24 --arp --iface "Wi-Fi" --scan
+
+5️⃣ Output Reports
+
+After scan, project saves 2 files in the same folder:
+
+scan_report_YYYYMMDD_HHMMSS.csv
+
+scan_report_YYYYMMDD_HHMMSS.json
+
+6️⃣ Exit Virtual Environment
+
+When done:
+
+deactivate
